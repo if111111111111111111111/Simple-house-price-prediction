@@ -1,0 +1,1 @@
+Prediction based on a linear regression model adapted from 'Dive into Deep Learning' (PyTorch edition) by Aston Zhang et al., with personal modifications (e.g., batch_size=128).
