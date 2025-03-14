@@ -2,13 +2,13 @@ import os
 import torch
 import numpy as np
 import pandas as pd
-from data_utils import preprocess_data
+from data_utils import preprocess_data  # 直接导入，不加 src
 from model import get_net, train, get_k_fold_data, log_rmse
 
 def main():
     train_features, train_labels, test_features, test_data = preprocess_data()
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
-    k = 20
+    k = 5
     best_rmse = float('inf')
     best_net = None
     for i in range(k):

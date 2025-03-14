@@ -14,7 +14,7 @@ def log_rmse(net, features, labels):
         mse = nn.MSELoss()(preds, labels)
     return torch.sqrt(mse).item()
 
-def train(net, train_features, train_labels, num_epochs=100, learning_rate=0.0001, weight_decay=1e-6, batch_size=1024):
+def train(net, train_features, train_labels, num_epochs=100, learning_rate=0.001, weight_decay=0., batch_size=128):
     device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
     net = net.to(device).float()
     if not isinstance(train_features, torch.Tensor):

@@ -21,9 +21,9 @@ def preprocess_data(data_dir="data"):
     all_features = pd.get_dummies(all_features, dummy_na=True)
 
     numeric_features = all_features.dtypes[all_features.dtypes != 'object'].index
-    all_features[numeric_features] = all_features[numeric_features].fillna(0)
+    all_features[numeric_features] = all_features[numeric_features].fillna(0)  # 处理缺失值
     all_features[numeric_features] = all_features[numeric_features].apply(
-        lambda x: (x - x.mean()) / (x.std() if x.std() != 0 else 1))
+        lambda x: (x - x.mean()) / (x.std() if x.std() != 0 else 1))  # 避免除以 0
 
     train_features = all_features[:train_data.shape[0]].values.astype(np.float32)
     test_features = all_features[train_data.shape[0]:].values.astype(np.float32)
